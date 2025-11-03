@@ -3,6 +3,9 @@ import { useAuth } from "./context/AuthContext";
 import Dashboard from "./pages/Dashboard";
 import Login from "./pages/Login";
 import Signup from "./pages/Signup";
+import Workspace from "./pages/Workspace";
+import Leaderboard from "./pages/Leaderboard";
+import Quizzes from "./pages/Quizzes";
 
 function App() {
   const { currentUser } = useAuth();
@@ -22,6 +25,30 @@ function App() {
           element={
             <ProtectedRoute>
               <Dashboard />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/workspace"
+          element={
+            <ProtectedRoute>
+              <Workspace />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/leaderboard"
+          element={
+            <ProtectedRoute>
+              <Leaderboard />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/quizzes"
+          element={
+            <ProtectedRoute>
+              <Quizzes />
             </ProtectedRoute>
           }
         />
