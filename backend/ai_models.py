@@ -44,7 +44,7 @@ def generate_text(pipe, prompt, model_name="gemma2b"):
     try:
         if model_name == "codebert":
              # CodeBERT is a fill-mask model, so the prompt should contain a <mask> token
-             return pipe(prompt)[0]['sequence']
+             return pipe(prompt)
 
         sequences = pipe(
             prompt,
