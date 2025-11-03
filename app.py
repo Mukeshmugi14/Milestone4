@@ -1,9 +1,26 @@
 import streamlit as st
 from streamlit_lottie import st_lottie
 import requests
-import sys
-sys.path.append('backend')
 from ai_models import get_model_pipeline, generate_text
+import firebase_admin
+from firebase_admin import credentials, firestore
+from data_analysis import run_data_analysis # Assuming this is the entry point
+
+# --- Firebase Initialization ---
+@st.cache_resource
+def init_firebase():
+    """Initialize Firebase Admin SDK."""
+    try:
+        # Check if the app is already initialized to avoid errors
+        if not firebase_admin._apps:
+            cred = credentials.Certificate("path/to/your/serviceAccountKey.json")
+            firebase_admin.initialize_app(cred)
+        return firestore.client()
+    except Exception as e:
+        st.error(f"Failed to initialize Firebase: {e}")
+        return None
+
+db = init_firebase()
 
 # --- Load Lottie Animation ---
 def load_lottieurl(url: str):
@@ -25,11 +42,11 @@ st.set_page_config(
 )
 
 # --- Load Custom CSS ---
-local_css("frontend/styles.css")
+local_css("styles.css")
 
 # --- Sidebar Navigation ---
 st.sidebar.title("Navigation")
-page = st.sidebar.radio("Go to", ["Home", "AI Workspace", "Leaderboards", "Quizzes", "Flashcards"])
+page = st.sidebar.radio("Go to", ["Home", "AI Workspace", "Data Analysis", "Leaderboards", "Quizzes", "Flashcards"])
 
 # --- Main Content ---
 st.title("CodeGenie")
@@ -64,6 +81,11 @@ elif page == "AI Workspace":
                     st.error("Model not available.")
         else:
             st.warning("Please enter a prompt.")
+elif page == "Data Analysis":
+    st.header("Data Analysis")
+    st.write("Run data analysis on the project.")
+    if st.button("Run Analysis"):
+        run_data_analysis()
 elif page == "Leaderboards":
     st.header("Leaderboards")
     st.write("See how you rank against other users.")

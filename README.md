@@ -1,6 +1,6 @@
 # CodeGenie
 
-CodeGenie is a full-stack web application designed to help developers learn and grow. It features an AI-powered workspace, leaderboards, quizzes, and flashcards.
+CodeGenie is a web application designed to help developers learn and grow. It features an AI-powered workspace, leaderboards, quizzes, and flashcards, all running in a single, easy-to-use Streamlit application.
 
 ## Installation
 
@@ -8,13 +8,13 @@ CodeGenie is a full-stack web application designed to help developers learn and 
     ```bash
     git clone <repository-url>
     ```
-2.  **Install backend dependencies:**
+2.  **Install dependencies:**
     ```bash
-    pip install -r backend/requirements.txt
+    pip install -r requirements.txt
     ```
 3.  **Run the application:**
     ```bash
-    streamlit run frontend/app.py
+    streamlit run app.py
     ```
 
 ## Windows Installation Notes
