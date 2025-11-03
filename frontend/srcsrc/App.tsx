@@ -6,7 +6,6 @@ import Signup from "./pages/Signup";
 import Workspace from "./pages/Workspace";
 import Leaderboard from "./pages/Leaderboard";
 import Quizzes from "./pages/Quizzes";
-import Admin from "./pages/Admin";
 
 function App() {
   const { currentUser } = useAuth();
@@ -17,14 +16,6 @@ function App() {
     }
     return children;
   };
-
-  // TODO: Add admin role check
-  const AdminRoute = ({ children }: { children: React.ReactNode }) => {
-    if (!currentUser) {
-      return <Navigate to="/login" />;
-    }
-    return children;
-  }
 
   return (
     <BrowserRouter>
@@ -59,14 +50,6 @@ function App() {
             <ProtectedRoute>
               <Quizzes />
             </ProtectedRoute>
-          }
-        />
-        <Route
-          path="/admin"
-          element={
-            <AdminRoute>
-              <Admin />
-            </AdminRoute>
           }
         />
         <Route path="/login" element={currentUser ? <Navigate to="/" /> : <Login />} />
