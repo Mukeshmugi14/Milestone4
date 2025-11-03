@@ -1,0 +1,10 @@
+streamlit
+firebase-admin
+plotly
+transformers
+torch
+pandas
+scikit-learn
+bcrypt
+pyjwt
+lottie
