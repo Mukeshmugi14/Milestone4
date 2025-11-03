@@ -1,0 +1,48 @@
+/* styles.css */
+
+/* --- Duolingo-Inspired Color Palette --- */
+:root {
+    --primary-color: #58cc02;    /* Green */
+    --primary-dark: #4aa802;     /* Darker Green */
+    --secondary-color: #1cb0f6; /* Blue */
+    --accent-color: #ffc800;     /* Yellow */
+    --text-color: #4b4b4b;       /* Dark Gray */
+    --background-color: #f7f7f7; /* Light Gray */
+    --border-radius: 12px;
+}
+
+/* --- Global Styles --- */
+body {
+    font-family: 'Poppins', sans-serif;
+    background-color: var(--background-color);
+    color: var(--text-color);
+}
+
+/* --- Main Container --- */
+.main .block-container {
+    padding: 2rem;
+}
+
+/* --- Custom Cards --- */
+.card {
+    background-color: white;
+    padding: 2rem;
+    border-radius: var(--border-radius);
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: transform 0.2s;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+}
+
+/* --- Sidebar Styles --- */
+.sidebar .sidebar-content {
+    background-color: white;
+    border-right: 1px solid #e0e0e0;
+}
+
+.stRadio > label:hover {
+    background-color: #f0f2f6;
+    transition: background-color 0.2s;
+}
